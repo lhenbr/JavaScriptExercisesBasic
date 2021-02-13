@@ -46,8 +46,6 @@ console.log(printDay(41));
 
 //LastElement
 function lastElement(arr){
-    if(!arr.length)
-        return undefined;
     return arr[(arr.length-1)]
 }
 console.log(lastElement([1,2,3,4]));
@@ -69,7 +67,7 @@ console.log(numberCompare(1,2));
 //SingleLetterCount
 function singleLetterCount(word, letter){
     let count = 0;
-    for(i=0;i<word.length;i++){
+    for(let i=0;i<word.length;i++){
         if(word[i].toUpperCase() == letter.toUpperCase())
             count++
     }
@@ -78,15 +76,58 @@ function singleLetterCount(word, letter){
 
 console.log(singleLetterCount('amazing','A'));
 console.log(singleLetterCount('Rithm School','o'));
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
-console.log();
+
+//MultipleLetterCount
+function multipleLetterCount(string){
+    let letterCount = {};
+    for(let i = 0; i < string.length;i++){
+        if(string[i] in letterCount)
+            letterCount[string[i]]++;
+        else
+            letterCount[string[i]] = 1;
+    }
+    return letterCount;
+}
+console.log(multipleLetterCount("hello"));
+console.log(multipleLetterCount("person"));
+//arrayManipulation
+function arrayManipulation(array, command, location, value){
+    if(command == "remove"){
+        if(location == "beginning"){
+            return array.shift();
+        }
+            return array.pop();
+    }
+    if(location == "beginning"){
+        array.unshift(value);
+        return array;
+        }
+        else{
+        array.push(value);
+        return array
+        }
+    }
+}
+
+console.log(arrayManipulation([1,2,3], "remove", "end"));
+
+console.log(arrayManipulation([1,2,3], "remove", "beginning"));
+console.log(arrayManipulation([1,2,3], "add", "beginning", 20));
+console.log(arrayManipulation([1,2,3], "add", "end", 30));
+//isPalindrome
+function isPalindrome(string){
+    string = string.replace(/\s+/g, '');
+    for(let i = 0;i < string.length;i++){
+        if(string[i].toUpperCase() !== string[string.length-1-i].toUpperCase()){
+            return false
+        }
+    }
+    return true;
+}
+
+console.log(isPalindrome('testing'));
+console.log(isPalindrome('tacocat'));
+console.log(isPalindrome('hannah'));
+console.log(isPalindrome('robert'));
+console.log(isPalindrome('a man a plan a canal Panama'));
 console.log();
